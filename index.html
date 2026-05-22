@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&BA / STUDIO OPERATING SYSTEM - Vol 02</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Load libraries globally so it works without a local server (double-click to open) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    
+    <!-- Architectural UI Overlay -->
+    <div class="ui-layer">
+        <!-- Top Nav -->
+        <header class="top-nav">
+            <div class="left">&BA / PUBLIC SURFACE<br>VOL.N 03 / 2026 - 2027</div>
+            <div class="right">EXTERNAL · INTERNAL<br>WORKING: DRAFT</div>
+            <div class="far-right">&BA / &BA<br>PUBLIC SURFACE<br>VOL. 03</div>
+        </header>
+
+        <!-- Main Title Area -->
+        <main class="main-content">
+            <div class="logo-box">&amp;</div>
+            <h1 class="title">Public<br><span class="highlight">Surface</span></h1>
+            <div class="subtitle">Website · Voice · Social · Journal</div>
+        </main>
+
+        <!-- Bottom Left Text -->
+        <div class="bottom-left">
+            <p class="description">How the studio is read,<br>before it is hired.</p>
+            <p class="small-text">COMPANION TO VOL. 01 - CLIENT ENGAGEMENT & VOL.<br>02 - OPERATING SYSTEM</p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bottom-nav">
+            <div class="ref">REF - 03</div>
+            <div class="sheet">SHEET 01 / 19</div>
+            <div class="status">01 - COVER</div>
+            <div class="issue">ISSUED FOR INTERNAL & EXTERNAL REVIEW</div>
+        </footer>
+
+        <!-- Crosshair & Grid Center Indicator -->
+        <div class="center-indicator"></div>
+        
+        <!-- Controls for data -->
+        <div class="data-controls">
+            <label>Sleep Data (hours)</label>
+            <input type="text" id="data-input" value="7, 5, 8, 6, 7.5, 9, 6.5, 7, 8, 5, 6, 7, 8, 7.5">
+            <button id="update-btn">Update Topography</button>
+        </div>
+    </div>
+
+    <!-- Background Grid lines -->
+    <div class="grid-overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

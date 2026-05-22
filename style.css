@@ -1,0 +1,224 @@
+:root {
+    --bg-color: #1a1b1e;
+    --text-primary: #f4f4f4;
+    --text-secondary: #888888;
+    --accent-blue: #6d98b6;
+    --grid-line: rgba(255, 255, 255, 0.05);
+    --grid-line-strong: rgba(255, 255, 255, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Background Grid Overlay */
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background-size: 10vw 10vw;
+    background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+.grid-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background-color: var(--grid-line-strong);
+}
+
+.grid-overlay::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--grid-line-strong);
+}
+
+.center-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-blue);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    box-shadow: 0 0 10px var(--accent-blue);
+}
+
+/* 3D Canvas */
+#canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* UI Layer */
+.ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Typography styles */
+.top-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+}
+
+.top-nav .left { text-align: left; }
+.top-nav .right { text-align: center; color: var(--text-secondary); }
+.top-nav .far-right { text-align: right; }
+
+.main-content {
+    position: absolute;
+    right: 10vw;
+    top: 20vh;
+    text-align: left;
+    text-transform: none;
+}
+
+.logo-box {
+    border: 1px solid var(--text-primary);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
+    color: var(--accent-blue);
+    margin-bottom: 80px;
+}
+
+.title {
+    font-size: 80px;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+}
+
+.title .highlight {
+    color: var(--accent-blue);
+    font-weight: 300;
+}
+
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.bottom-left {
+    position: absolute;
+    left: 2vw;
+    bottom: 8vh;
+    text-transform: none;
+}
+
+.bottom-left .description {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.bottom-left .small-text {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+}
+
+.bottom-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%;
+    border-top: 1px solid var(--grid-line-strong);
+    padding-top: 15px;
+    color: var(--text-secondary);
+}
+
+.bottom-nav .sheet { text-align: center; border-right: 1px solid var(--grid-line-strong); padding-right: 10px;}
+.bottom-nav .status { text-align: left; padding-left: 10px;}
+.bottom-nav .issue { text-align: right; }
+
+.data-controls {
+    position: absolute;
+    left: 2vw;
+    top: 20vh;
+    pointer-events: auto;
+    background: rgba(26, 27, 30, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--grid-line-strong);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 250px;
+}
+
+.data-controls input {
+    background: transparent;
+    border: 1px solid var(--grid-line-strong);
+    color: var(--text-primary);
+    padding: 8px;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.data-controls button {
+    background: var(--accent-blue);
+    color: var(--bg-color);
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: inherit;
+    font-size: 11px;
+    transition: opacity 0.2s;
+}
+
+.data-controls button:hover {
+    opacity: 0.8;
+}
